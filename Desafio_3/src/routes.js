@@ -23,6 +23,7 @@ routes.get('/recipients', RecipientController.index);
 routes.delete('/recipients/:id', RecipientController.destroy);
 
 routes.get('/deliverymen', DeliverymanController.index);
+routes.get('/deliverymen/:id', DeliverymanController.show);
 routes.post('/deliverymen', DeliverymanController.store);
 
 export default routes;

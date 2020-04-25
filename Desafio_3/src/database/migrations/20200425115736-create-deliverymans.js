@@ -2,10 +2,10 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('deliverymans', {
       id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        primary: true,
         allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER,
       },
 
       name: {
@@ -14,8 +14,11 @@ module.exports = {
       },
 
       avatar_id: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         allowNull: true,
+        references: { model: 'files', key: 'id' },
+        onDelete: 'SET NULL',
+        onUpdate: 'CASCADE',
       },
 
       email: {
@@ -24,13 +27,13 @@ module.exports = {
       },
 
       created_at: {
-        type: Sequelize.DATE,
         allowNull: false,
+        type: Sequelize.DATE,
       },
 
       updated_at: {
-        type: Sequelize.DATE,
         allowNull: false,
+        type: Sequelize.DATE,
       },
     });
   },

@@ -4,7 +4,7 @@ class Orders extends Model {
   static init(sequelize) {
     super.init(
       {
-        recipient: Sequelize.INTEGER,
+        recipient_id: Sequelize.INTEGER,
         deliveryman_id: Sequelize.INTEGER,
         product: Sequelize.STRING,
         canceled_at: Sequelize.DATE,

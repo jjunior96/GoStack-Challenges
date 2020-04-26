@@ -5,8 +5,8 @@ class Deliveryman extends Model {
     super.init(
       {
         name: Sequelize.STRING,
-        avatar_id: Sequelize.STRING,
         email: Sequelize.STRING,
+        avatar_id: Sequelize.INTEGER,
       },
       {
         sequelize,
@@ -16,9 +16,9 @@ class Deliveryman extends Model {
     return this;
   }
 
-  // static associate(models) {
-  //   this.belongsTo(models.Files, { foreignKey: 'avatar_id', as: 'avatar' });
-  // }
+  static associate(models) {
+    this.belongsTo(models.Files, { foreignKey: 'avatar_id', as: 'avatar' });
+  }
 }
 
 export default Deliveryman;

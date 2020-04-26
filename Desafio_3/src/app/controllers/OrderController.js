@@ -6,6 +6,16 @@ import Deliveryman from '../models/Deliveryman';
 // import File from '../models/Files';
 
 class OrderController {
+  async index(req, res) {
+    const orders = await Order.findAll();
+
+    if (!orders) {
+      return res.status(400).json({ error: 'Not exists orders.' });
+    }
+
+    return res.json(orders);
+  }
+
   async store(req, res) {
     const schema = Yup.object().shape({
       product: Yup.string().required(),

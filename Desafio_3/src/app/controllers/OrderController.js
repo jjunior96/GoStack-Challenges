@@ -3,7 +3,6 @@ import * as Yup from 'yup';
 import Order from '../models/Order';
 import Recipient from '../models/Recipient';
 import Deliveryman from '../models/Deliveryman';
-import Orders from '../models/Order';
 // import File from '../models/Files';
 
 class OrderController {
@@ -60,7 +59,7 @@ class OrderController {
 
     const { product, recipient_id, deliveryman_id } = req.body;
 
-    const order = await Orders.findByPk(id);
+    const order = await Order.findByPk(id);
 
     order.update({ product, recipient_id, deliveryman_id });
 

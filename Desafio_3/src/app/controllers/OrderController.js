@@ -16,6 +16,17 @@ class OrderController {
     return res.json(orders);
   }
 
+  async show(req, res) {
+    const { id } = req.params;
+    const order = await Order.findByPk(id);
+
+    if (!order) {
+      return res.status(400).json({ error: 'Order does not exists.' });
+    }
+
+    return res.json(order);
+  }
+
   async store(req, res) {
     const schema = Yup.object().shape({
       product: Yup.string().required(),

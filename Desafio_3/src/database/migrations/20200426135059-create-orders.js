@@ -24,7 +24,7 @@ module.exports = {
         onUpdate: 'CASCADE',
       },
 
-      signature: {
+      signature_id: {
         type: Sequelize.INTEGER,
         allowNull: true,
         references: { model: 'files', key: 'id' },
@@ -47,7 +47,7 @@ module.exports = {
         allowNull: true,
       },
 
-      end_date: {
+      ended_at: {
         type: Sequelize.DATE,
         allowNull: true,
       },

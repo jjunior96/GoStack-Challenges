@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 import Order from '../models/Order';
 import Recipient from '../models/Recipient';
 import Deliveryman from '../models/Deliveryman';
+import Orders from '../models/Order';
 // import File from '../models/Files';
 
 class OrderController {
@@ -43,6 +44,29 @@ class OrderController {
       recipient,
       deliveryman,
     });
+  }
+
+  async update(req, res) {
+    const { id } = req.params;
+    const schema = Yup.object().shape({
+      product: Yup.string(),
+      recipient_id: Yup.number(),
+      deliveryman_id: Yup.number(),
+    });
+
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).jsoon({ error: 'Validation fails.' });
+    }
+
+    const { product, recipient_id, deliveryman_id } = req.body;
+
+    const order = await Orders.findByPk(id);
+
+    order.update({ product, recipient_id, deliveryman_id });
+
+    order.save();
+
+    return res.json(order);
   }
 }
 

@@ -16,6 +16,7 @@ routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
 
 routes.get('/deliveryman/:id/deliveries', DeliveriesController.index);
+routes.put('/deliveryman/:id/deliveries', DeliveriesController.update);
 
 // private routes
 routes.use(authMiddleware);
